@@ -5,9 +5,13 @@ import TabButton from './components/TabButton.jsx';
 
 function App() {
 
+  let tabContent = "Select a tab to see the content";
+
   // This function will be called when a TabButton is clicked
-  function handleSelect(){
-    console.log('Tab selected');
+  function handleSelect(selectedButton){
+    console.log(`You selected the ${selectedButton} tab!`);
+    tabContent = selectedButton;
+
   }
 
   return (
@@ -35,12 +39,12 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu> {/*html element to create a list of buttons*/}
-            <TabButton onSelect={handleSelect} >Components</TabButton>
-            <TabButton onSelect={handleSelect}>JSX</TabButton>
-            <TabButton onSelect={handleSelect}>Props</TabButton>
-            <TabButton onSelect={handleSelect}>State</TabButton>
+            <TabButton onSelect={() => handleSelect('Components')}>Components</TabButton>
+            <TabButton onSelect={() => handleSelect('JSX')}>JSX</TabButton>
+            <TabButton onSelect={() => handleSelect('Props')}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect('State')}>State</TabButton>
           </menu>
-
+          {tabContent}
         </section>
       </main>
     </div>
