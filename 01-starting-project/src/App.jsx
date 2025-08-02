@@ -2,15 +2,17 @@ import {CORE_CONCEPTS } from './data.js';
 import Header from './components/Header.jsx';
 import CoreConcept from './components/CoreConcept.jsx';
 import TabButton from './components/TabButton.jsx';
+import { useState } from 'react';
+import {EXAMPLES} from './data-with-examples.js';
 
 function App() {
 
-  let tabContent = "Select a tab to see the content";
+  const [selectedTopic, setSelectedTopic] = useState();
 
   // This function will be called when a TabButton is clicked
   function handleSelect(selectedButton){
+    setSelectedTopic(selectedButton);
     console.log(`You selected the ${selectedButton} tab!`);
-    tabContent = selectedButton;
 
   }
 
@@ -39,12 +41,22 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu> {/*html element to create a list of buttons*/}
-            <TabButton onSelect={() => handleSelect('Components')}>Components</TabButton>
-            <TabButton onSelect={() => handleSelect('JSX')}>JSX</TabButton>
-            <TabButton onSelect={() => handleSelect('Props')}>Props</TabButton>
-            <TabButton onSelect={() => handleSelect('State')}>State</TabButton>
+            <TabButton onSelect={() => handleSelect('components')}>Components</TabButton>
+            <TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
+            <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
           </menu>
-          {tabContent}
+          <div id="tab-content">
+            {selectedTopic === undefined ? <p>Please select a topic.</p> : null }
+            {selectedTopic ? (
+              <div id="tab-content" >
+                <h3>{EXAMPLES[selectedTopic]?.title}</h3>
+                <p>{EXAMPLES[selectedTopic]?.description}</p>
+                <pre><code>{EXAMPLES[selectedTopic]?.code}</code></pre>
+              </div>
+              ) : null
+            }
+          </div>
         </section>
       </main>
     </div>

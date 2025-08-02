@@ -5,7 +5,7 @@ const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
 function genRandomInt(max) {
   let ret = Math.floor(Math.random() * (max + 1));
-  console.log(ret);
+  //console.log(ret);
   return ret;
 }
 
