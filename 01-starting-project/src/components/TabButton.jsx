@@ -1,4 +1,4 @@
-export default function TabButton({children, onSelect}){
+export default function TabButton({children, onSelect, isSelected}){
   //onSelect is a function that will be called when the button is clicked
   
   /*function handleClick() {
@@ -8,7 +8,8 @@ export default function TabButton({children, onSelect}){
   return(
     <li>{/* DO NOT ADD PARENTESIS ON THE FUNCTION BECAUSE YOU DONT
           EXCECUTE IT, REACT DOES */}
-      <button onClick={onSelect}>{children}</button>
+      <button className={isSelected ? 'active' : undefined} 
+              onClick={onSelect}>{children}</button>
       {/* This button will call the onSelect function when clicked.*/}
     </li>
   )
