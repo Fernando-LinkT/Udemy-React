@@ -34,7 +34,9 @@ export default function Examples() {
   return (
   <Section title="Examples" id="examples">
 
-    <Tabs buttons =
+    <Tabs 
+    //use the identifier of the component as a value for this prop
+    buttons =
     {
       <>
         <TabButton isSelected={selectedTopic=== 'components'} onClick={() => handleSelect('components')}>Components</TabButton>
